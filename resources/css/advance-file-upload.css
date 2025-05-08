@@ -1,0 +1,51 @@
+/*!
+ * FilePondPluginPdfPreview 1.0.2
+ * Licensed under MIT, https://opensource.org/licenses/MIT/
+ * Please visit undefined for details.
+ */
+
+/* eslint-disable */
+.filepond--pdf-preview-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 100%;
+    margin: 0;
+    border-radius: .45em;
+    overflow: hidden;
+    background: rgba(0, 0, 0, .01);
+    pointer-events: auto;
+    border-top: 2px solid #00aa44;
+}
+
+.filepond--pdf-preview-wrapper:before {
+    content: " ";
+    position: absolute;
+    width: 100%;
+    height: 5em;
+    background: #008833;
+    background: -webkit-linear-gradient(top, #008833 0%, rgba(0, 170, 68, 0.6) 30%, transparent 100%);
+    background: linear-gradient(to bottom, #008833 0%, rgba(0, 170, 68, 0.6) 30%, transparent 100%);
+    z-index: 3;
+    opacity: 0.9;
+}
+
+.filepond--pdf-preview {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    will-change: transform, opacity
+}
+
+.filepond--pdf-preview #outerContainer #mainContainer div.toolbar {
+    display: none !important
+}
+
+.filepond--pdf-preview #outerContainer #mainContainer #viewerContainer {
+    top: 0 !important
+}
