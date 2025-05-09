@@ -1,3 +1,4 @@
 /.gitattributes export-ignore
 /package.json export-ignore
 /.gitignore export-ignore
+/build export-ignore
