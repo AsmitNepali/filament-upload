@@ -2,7 +2,6 @@
 The **Advance Upload** plugin allow you to upload PDF file with preview along with the filament default file upload feature.
 
 ![Filament Upload Plugin](https://raw.githubusercontent.com/AsmitNepali/filament-upload/refs/heads/main/images/cover.jpg)
-
 ## Installation
 You can install the package via composer:
 
