@@ -2,3 +2,4 @@
 /package.json export-ignore
 /.gitignore export-ignore
 /build export-ignore
+/images export-ignore
