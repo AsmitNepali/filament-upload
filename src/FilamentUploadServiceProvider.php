@@ -20,9 +20,9 @@ class FilamentUploadServiceProvider extends PackageServiceProvider
     public function packageBooted()
     {
         FilamentAsset::register([
-            AlpineComponent::make(id: 'filepond-pdf', path: __DIR__.'/../resources/dist/js/advance-file-upload.js')
+            AlpineComponent::make(id: 'filepond-pdf', path: __DIR__.'/../resources/dist/js/advanced-file-upload.js')
                 ->loadedOnRequest(),
-            Css::make(id: 'filepond-pdf', path: __DIR__.'/../resources/css/advance-file-upload.css'),
+            Css::make(id: 'filepond-pdf', path: __DIR__.'/../resources/css/advanced-file-upload.css'),
         ], package: 'asmit/filament-upload');
     }
 }
