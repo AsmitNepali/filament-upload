@@ -1,38 +1,36 @@
-@php 
+@php
     use Filament\Support\Facades\FilamentView;
     use Filament\Support\Facades\FilamentAsset;
 
-    // TODO: do later
-    $pdfPreviewHeight = 320;
-    $scrollbar = 1;
-    $displayPage = 3;
-    $toolbar = false;
-    $navPanes = false;
-    $statusBar = false;
-    $zoom = false;
-    $view = "fitH";
+    // TODO
+    $pdfPreviewHeight = $getPdfPreviewHeight() ;
+    $pdfScrollbar = 1;
+    $pdfDisplayPage = $getPdfDisplayPage();
+    $pdfToolbar = $getPdfToolbar();
+    $pdfNavePanes = $getPdfNavPanes();
+    $pdfZoomLevel = $getPdfZoomLevel();
+    $pdfView = $getPdfFitType();
 @endphp
 
 <div>
-    <div 
-    x-data="uploadPdf({
+    <div
+        x-data="uploadPdf({
         pdfPreviewHeight: @js($pdfPreviewHeight),
-        pdfScrollbar: @js($scrollbar),
-        pdfDisplayPage: @js($displayPage),
-        pdfToolbar: @js($toolbar),
-        pdfNavPanes: @js($navPanes),
-        pdfStatusBar: @js($statusBar),
-        pdfZoom: @js($zoom),
-        pdfView: @js($view)
+        pdfScrollbar: @js($pdfScrollbar),
+        pdfDisplayPage: @js($pdfDisplayPage),
+        pdfToolbar: @js($pdfToolbar),
+        pdfNavPanes: @js($pdfNavePanes),
+        pdfZoom: @js($pdfZoomLevel),
+        pdfView: @js($pdfView)
     })"
-    @if (FilamentView::hasSpaMode())
-        {{-- format-ignore-start --}}x-load="visible || event (ax-modal-opened)"{{-- format-ignore-end --}}
-    @else
-        x-load
-    @endif 
-    x-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('filepond-pdf', 'asmit/filament-upload') }}"
-    x-load-css="[@js(FilamentAsset::getStyleHref(id: 'filepond-pdf', package: 'asmit/filament-upload'))]"
-    wire:ignore
+        @if (FilamentView::hasSpaMode())
+            x-load="visible || event (ax-modal-opened)"
+        @else
+            x-load
+        @endif
+        x-load-src="{{ FilamentAsset::getAlpineComponentSrc('filepond-pdf', 'asmit/filament-upload') }}"
+        x-load-css="[@js(FilamentAsset::getStyleHref(id: 'filepond-pdf', package: 'asmit/filament-upload'))]"
+        wire:ignore
     >
         @include('filament-forms::components.file-upload')
     </div>
