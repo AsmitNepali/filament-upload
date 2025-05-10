@@ -1,5 +1,5 @@
 # Advance Upload
-The **Advance Upload** plugin allow you to upload PDF file with preview along with the filament default file upload feature.
+The **Advanced Upload** plugin allow you to upload PDF file with preview along with the filament default file upload feature.
 
 ![Filament Upload Plugin](https://raw.githubusercontent.com/AsmitNepali/filament-upload/refs/heads/main/images/cover.jpg)
 ## Installation
@@ -14,13 +14,13 @@ You can install the package via composer:
  ```
 ## Usage
 ```php
-use Asmit\FilamentUpload\Forms\Components\AdvanceFileUpload;
+use Asmit\FilamentUpload\Forms\Components\AdvancedFileUpload;
 
 public static function form(Form $form): Form
 {
     return $form
         ->schema([
-            AdvanceFileUpload::make('file')
+            AdvancedFileUpload::make('file')
                 ->label('Upload PDF')
         ]);
 }
