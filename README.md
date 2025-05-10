@@ -57,6 +57,7 @@ public static function form(Form $form): Form
 | `pdfNavPanes()` | Enable/disable navigation panes | false |
 
 ## Credits
+- [Kishan Sunar][link-kishan]
 - [Asmit Nepal][link-asmit]
 
 ### Security
@@ -70,3 +71,4 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 The MIT License (MIT). Please see [License File](LICENSE.txt) for more information.
 
 [link-asmit]: https://github.com/AsmitNepali
+[link-kishan]: https://github.com/Kishan-Sunar
