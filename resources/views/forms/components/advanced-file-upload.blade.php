@@ -15,7 +15,7 @@
 
 <div>
     <div
-        x-data="uploadPdf({
+        x-data="advancedFileUpload({
         getUploadedFilesUsing: async () => {
                     return await $wire.getFormUploadedFiles(@js($statePath))
                 },
@@ -25,7 +25,8 @@
         pdfToolbar: @js($pdfToolbar),
         pdfNavPanes: @js($pdfNavePanes),
         pdfZoom: @js($pdfZoomLevel),
-        pdfView: @js($pdfView)
+        pdfView: @js($pdfView),
+        allowPdfPreview: @js($isPreviewable()),
     })"
         @if (FilamentView::hasSpaMode())
             x-load="visible || event (ax-modal-opened)"

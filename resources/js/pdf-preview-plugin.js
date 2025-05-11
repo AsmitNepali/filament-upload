@@ -20,14 +20,19 @@ const createPdfPreviewView = (utils) => {
     const didPdfPreviewLoad = ({ root, props }) => {
         const { id } = props;
         const item = root.query("GET_ITEM", id);
-
-        let URL = window.URL || window.webkitURL;
-        let blob = new Blob([item.file], { type: item.file.type });
-
         const params = buildParams(root);
 
-        // If we change the iframe to object, we need to change the src to data
-        root.ref.pdf.src = `${URL.createObjectURL(blob)}#${params.toString()}`;
+        const fileSource = () => {
+            if (typeof item.source !== "string") {
+                let URL = window.URL || window.webkitURL;
+
+                const blob = new Blob([item.file], { type: item.file.type });
+                return URL.createObjectURL(blob);
+            }
+            return item.source;
+        };
+
+        root.ref.pdf.src = `${fileSource()}#${params.toString()}`;
 
         root.ref.pdf.addEventListener(
             "load",
@@ -45,12 +50,12 @@ const createPdfPreviewView = (utils) => {
         const item = root.query("GET_ITEM", props.id);
         if (!item.file) return;
 
-        // TODO: change to object
         root.ref.pdf = document.createElement("iframe");
         root.ref.pdf.setAttribute(
             "height",
             root.query("GET_PDF_PREVIEW_HEIGHT") || 320
         );
+
         root.ref.pdf.classList.add("filepond--pdf-preview-iframe");
 
         root.element.appendChild(root.ref.pdf);
@@ -175,8 +180,16 @@ const PdfPreviewPlugin = (fpInstance) => {
             const { id } = props;
             const item = query("GET_ITEM", id);
 
-            // exit if item does not exist or is not a file or is archived
-            if (!item || !isPdfFile(item?.file) || item?.archived) return;
+            const isPreviewable = query("GET_ALLOW_PDF_PREVIEW");
+
+            // exit if item does not exist or is not a file or is archived or is not previewable
+            if (
+                !item ||
+                !isPdfFile(item?.file) ||
+                item?.archived ||
+                !isPreviewable
+            )
+                return;
 
             // set preview view
             root.ref.pdfPreview = view.appendChildView(
@@ -191,7 +204,6 @@ const PdfPreviewPlugin = (fpInstance) => {
                 DID_LOAD_ITEM: didLoadItem,
             }),
             (root, props) => {
-                console.log("init");
                 // no preview view attached
                 if (!root.ref.pdfPreview) return;
 
