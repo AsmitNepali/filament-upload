@@ -1,0 +1,28 @@
+{
+    "name": "asmit/filament-upload",
+    "description": "Filament PDF file upload and preview.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Asmit\\FilamentUpload\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "AsmitNepali",
+            "email": "mail2asmitnepali@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "filament/support": "^3.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+              "Asmit\\FilamentUpload\\FilamentUploadServiceProvider"
+            ]
+        }
+    }
+}
