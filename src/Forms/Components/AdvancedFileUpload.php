@@ -7,7 +7,7 @@ use Filament\Forms\Components\FileUpload;
 
 class AdvancedFileUpload extends FileUpload
 {
-    //    use HasPdf;
+    use HasPdf;
 
     protected string $view = 'asmit-filament-upload::forms.components.advanced-file-upload';
 }

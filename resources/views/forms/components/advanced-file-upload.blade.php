@@ -2,7 +2,6 @@
     use Filament\Support\Facades\FilamentView;
     use Filament\Support\Facades\FilamentAsset;
 
-    // TODO
     $pdfPreviewHeight = 320;
     $pdfScrollbar = 0;
     $pdfDisplayPage = 0;
@@ -16,9 +15,6 @@
 <div>
     <div
         x-data="advancedFileUpload({
-        getUploadedFilesUsing: async () => {
-                    return await $wire.getFormUploadedFiles(@js($statePath))
-                },
         pdfPreviewHeight: @js($pdfPreviewHeight),
         pdfScrollbar: @js($pdfScrollbar),
         pdfDisplayPage: @js($pdfDisplayPage),
