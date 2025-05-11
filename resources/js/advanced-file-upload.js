@@ -1,6 +1,15 @@
 import PdfPreviewPlugin from "./pdf-preview-plugin";
 
-export default function uploadPdf(options) {
+export default function advancedFileUpload({
+    pdfPreviewHeight,
+    pdfScrollbar,
+    pdfDisplayPage,
+    pdfToolbar,
+    pdfNavPanes,
+    pdfZoom,
+    pdfView,
+    allowPdfPreview,
+}) {
     document.addEventListener("FilePond:loaded", function () {
         const filePond = window.FilePond;
 
@@ -8,6 +17,15 @@ export default function uploadPdf(options) {
         filePond.registerPlugin(PdfPreviewPlugin);
 
         // Configure Global Options
-        filePond.setOptions(options);
+        filePond.setOptions({
+            pdfPreviewHeight,
+            pdfScrollbar,
+            pdfDisplayPage,
+            pdfToolbar,
+            pdfNavPanes,
+            pdfZoom,
+            pdfView,
+            allowPdfPreview,
+        });
     });
 }

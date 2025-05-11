@@ -2,26 +2,27 @@
     use Filament\Support\Facades\FilamentView;
     use Filament\Support\Facades\FilamentAsset;
 
-    // TODO
-    $pdfPreviewHeight = $getPdfPreviewHeight() ;
-    $pdfScrollbar = 1;
-    $pdfDisplayPage = $getPdfDisplayPage();
-    $pdfToolbar = $getPdfToolbar();
-    $pdfNavePanes = $getPdfNavPanes();
-    $pdfZoomLevel = $getPdfZoomLevel();
-    $pdfView = $getPdfFitType();
+    $pdfPreviewHeight = 320;
+    $pdfScrollbar = 0;
+    $pdfDisplayPage = 0;
+    $pdfToolbar = false;
+    $pdfNavePanes = false;
+    $pdfZoomLevel = 100;
+    $pdfView = '';
+    $statePath = $getStatePath();
 @endphp
 
 <div>
     <div
-        x-data="uploadPdf({
+        x-data="advancedFileUpload({
         pdfPreviewHeight: @js($pdfPreviewHeight),
         pdfScrollbar: @js($pdfScrollbar),
         pdfDisplayPage: @js($pdfDisplayPage),
         pdfToolbar: @js($pdfToolbar),
         pdfNavPanes: @js($pdfNavePanes),
         pdfZoom: @js($pdfZoomLevel),
-        pdfView: @js($pdfView)
+        pdfView: @js($pdfView),
+        allowPdfPreview: @js($isPreviewable()),
     })"
         @if (FilamentView::hasSpaMode())
             x-load="visible || event (ax-modal-opened)"
