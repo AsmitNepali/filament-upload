@@ -17,7 +17,7 @@ The **Advanced Upload** plugin allows you to upload PDF files with preview funct
 You can install the package via composer:
 
 ```bash
-composer require asmit/filment-upload
+composer require asmit/filament-upload
 ```
 
 ## Publishing Assets
