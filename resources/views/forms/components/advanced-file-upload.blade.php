@@ -2,7 +2,7 @@
     use Filament\Support\Facades\FilamentView;
     use Filament\Support\Facades\FilamentAsset;
 
-    $pdfPreviewHeight = 320;
+    $pdfPreviewHeight = $getPdfPreviewHeight();
     $pdfScrollbar = 0;
     $pdfDisplayPage = 0;
     $pdfToolbar = false;
