@@ -1,4 +1,4 @@
-# Advance Upload
+# Advanced Upload
 The **Advanced Upload** plugin allows you to upload PDF files with preview functionality along with Filament's default file upload features. This package provides a seamless way to handle PDF uploads with customizable preview options.
 
 ![Filament Upload Plugin](https://raw.githubusercontent.com/AsmitNepali/filament-upload/refs/heads/main/images/cover.jpg)
