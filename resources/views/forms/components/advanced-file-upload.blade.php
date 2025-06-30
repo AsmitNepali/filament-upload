@@ -31,7 +31,6 @@
         @endif
         x-load-src="{{ FilamentAsset::getAlpineComponentSrc('filepond-pdf', 'asmit/filament-upload') }}"
         x-load-css="[@js(FilamentAsset::getStyleHref(id: 'filepond-pdf', package: 'asmit/filament-upload'))]"
-        wire:ignore
     >
         @include('filament-forms::components.file-upload')
     </div>
