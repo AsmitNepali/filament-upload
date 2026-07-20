@@ -32,6 +32,14 @@
         x-load-src="{{ FilamentAsset::getAlpineComponentSrc('filepond-pdf', 'asmit/filament-upload') }}"
         x-load-css="[@js(FilamentAsset::getStyleHref(id: 'filepond-pdf', package: 'asmit/filament-upload'))]"
     >
-        @include('filament-forms::components.file-upload')
+        {{-- Filament v5.7 removed the `filament-forms::components.file-upload` Blade
+            view and switched FileUpload to an embedded (HasEmbeddedView) renderer.
+            Fall back to it when the Blade view is gone, while staying compatible
+            with Filament v3/v4 which still ship the view. --}}
+        @if (view()->exists('filament-forms::components.file-upload'))
+            @include('filament-forms::components.file-upload')
+        @else
+            {!! $toEmbeddedHtml() !!}
+        @endif
     </div>
 </div>
