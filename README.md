@@ -5,13 +5,14 @@ The **Advanced Upload** plugin allows you to upload PDF files with preview funct
 
 ## Features
 - PDF file upload with live preview
+- Inline PDF viewer for infolists
 - Customizable preview height
 - Configurable page display
 - Optional toolbar controls
 - Adjustable zoom levels
 - Multiple fit types for PDF display
 - Optional navigation panes
-- Seamless integration with Filament forms
+- Seamless integration with Filament forms and infolists
 
 ## Installation
 You can install the package via composer:
@@ -26,6 +27,8 @@ php artisan filament:assets
 ```
 
 ## Usage
+
+### Forms
 ```php
 use Asmit\FilamentUpload\Forms\Components\AdvancedFileUpload;
 
@@ -45,6 +48,37 @@ public static function form(Form $form): Form
 }
 ```
 
+### Infolists
+`PdfEntry` embeds a stored PDF directly in the panel, so uploads can be reviewed without leaving it.
+
+```php
+use Asmit\FilamentUpload\Infolists\Components\PdfEntry;
+
+public static function infolist(Infolist $infolist): Infolist
+{
+    return $infolist
+        ->schema([
+            PdfEntry::make('document')
+                ->label('Uploaded PDF')
+                ->pdfPreviewHeight(500) // Customize preview height
+                ->pdfToolbar(true) // Enable toolbar
+                ->downloadable() // Show a "Download" link
+                ->openable(), // Show an "Open in new tab" link
+        ]);
+}
+```
+
+The entry takes the same PDF options as the form component. It reads the file from Filament's default
+filesystem disk unless told otherwise, and renders one viewer per file when the state is an array
+(i.e. for `multiple()` uploads):
+
+```php
+PdfEntry::make('documents')
+    ->disk('s3')
+    ->visibility('private') // Uses a temporary URL when the disk supports one
+    ->temporaryUrlExpiration(10) // Minutes, default 5
+```
+
 ## Configuration Options
 
 | Method | Description | Default |
@@ -55,6 +89,24 @@ public static function form(Form $form): Form
 | `pdfZoomLevel()` | Set the zoom level percentage | 100 |
 | `pdfFitType()` | Set the PDF fit type | FIT |
 | `pdfNavPanes()` | Enable/disable navigation panes | false |
+
+### `PdfEntry` only
+
+| Method | Description | Default |
+|--------|-------------|---------|
+| `disk()` | Filesystem disk the file lives on | `filament.default_filesystem_disk` |
+| `visibility()` | File visibility, `private` opts into temporary URLs | `public` |
+| `temporaryUrlExpiration()` | Lifetime of a temporary URL, in minutes | 5 |
+| `downloadable()` | Show a download link under the viewer | false |
+| `openable()` | Show an "open in new tab" link under the viewer | false |
+
+All of the above also accept a closure, evaluated when the entry renders.
+
+## Testing
+```bash
+composer install
+./vendor/bin/phpunit
+```
 
 ## Credits
 - [Kishan Sunar][link-kishan]

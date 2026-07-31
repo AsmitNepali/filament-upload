@@ -1,4 +1,7 @@
 vendor
+composer.lock
+/.phpunit.cache
 /node_modules
 /.DS_Store
 .DS_Store
+.phpunit.result.cache

@@ -54,3 +54,32 @@
 .filepond--overlay-shadow.overlay-shadow--failure {
     background: linear-gradient(to bottom, #c44e47 0%, transparent 100%);
 }
+
+.asmit-pdf-entry {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.asmit-pdf-entry-frame {
+    width: 100%;
+    border: 1px solid rgb(228 228 231);
+    border-radius: 0.5rem;
+    background: #fff;
+}
+
+.dark .asmit-pdf-entry-frame {
+    border-color: rgb(255 255 255 / 0.1);
+    background: #18181b;
+}
+
+.asmit-pdf-entry-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.asmit-pdf-entry-placeholder {
+    font-size: 0.875rem;
+    color: rgb(161 161 170);
+}
